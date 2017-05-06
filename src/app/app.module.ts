@@ -14,13 +14,22 @@ import { HeroesComponent } from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
 
+import { BrowserAnimationsModule}  from '@angular/platform-browser/animations';
+import { MdToolbarModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import 'hammerjs';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 })
+    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 }),
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    FlexLayoutModule
   ],
   declarations: [
     AppComponent,
