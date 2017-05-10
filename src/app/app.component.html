@@ -1,10 +1,15 @@
-<div fxLayout="column" fxFlex>
+<div fxLayout="column" fxFlex [class]="activeTheme">
 
   <md-toolbar color="primary">
     <button md-icon-button (click)="mainSideNav.toggle()">
       <md-icon>menu</md-icon>
     </button>
     <span>{{title}}</span>
+    <span fxFlex></span>
+
+    <button md-icon-button [mdMenuTriggerFor]="themeMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
   </md-toolbar>
 
   <md-sidenav-container fxFlex>
@@ -28,5 +33,11 @@
 
     </div>
   </md-sidenav-container>
+
+  <md-menu #themeMenu x-position="before">
+    <button md-menu-item (click)="activeTheme = ''">Regular Hero</button>
+    <button md-menu-item (click)="activeTheme = 'darkside-hero-theme'">Darkside Hero</button>
+    <button md-menu-item (click)="activeTheme = 'baby-hero-theme'">Baby Hero</button>
+  </md-menu>
 
 </div>

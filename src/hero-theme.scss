@@ -1,20 +1,3 @@
-# Step Actions
-
-styles.css
-```
-Remove prebuilt
-```
-
-hero-theme.scss
-```
-"styles": [
-        ...
-        "hero-theme.scss"
-      ]
-```
-
-hero-theme.scss
-```
 @import '~@angular/material/_theming';
 @include mat-core();
 
@@ -144,38 +127,3 @@ $hero-theme: mat-light-theme($hero-primary, $hero-accent, $hero-warn);
 
     @include angular-material-theme($dark-theme);
 }
-```
-
-app.component.html
-```
-<div ... [class]="activeTheme">
-
-  <md-toolbar color="primary">
-    ...
-    <span fxFlex></span>
-
-    <button md-icon-button [mdMenuTriggerFor]="themeMenu">
-      <md-icon>more_vert</md-icon>
-    </button>
-  </md-toolbar>
-
-  ...
-
-  <md-menu #themeMenu x-position="before">
-    <button md-menu-item (click)="activeTheme = ''">Regular Hero</button>
-    <button md-menu-item (click)="activeTheme = 'darkside-hero-theme'">Darkside Hero</button>
-    <button md-menu-item (click)="activeTheme = 'baby-hero-theme'">Baby Hero</button>
-  </md-menu>
-
-</div>
-```
-
-app.component.ts
-```
-  activeTheme = ''
-```
-
-custom-material.module.ts
-```
-MdMenuModule
-```
