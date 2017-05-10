@@ -1,3 +1,20 @@
+
+
+
+git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
+cd toh
+npm i
+```
+
+Super simple Angular app with 1 module and 2 routes 
+
+## Get the Code
+```
+git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
+cd toh
+npm i
+```
+
 # Getting Started
 
 Super simple Angular app with 1 module and 2 routes 

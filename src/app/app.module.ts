@@ -15,7 +15,7 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
 
 import { BrowserAnimationsModule}  from '@angular/platform-browser/animations';
-import { MdToolbarModule } from '@angular/material';
+import { CustomMaterialModule } from './custom-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import 'hammerjs';
@@ -28,7 +28,7 @@ import 'hammerjs';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 }),
     BrowserAnimationsModule,
-    MdToolbarModule,
+    CustomMaterialModule,
     FlexLayoutModule
   ],
   declarations: [
