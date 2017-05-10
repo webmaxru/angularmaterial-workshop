@@ -2,20 +2,23 @@
 
 <h3>Top Heroes</h3>
 
-<md-card *ngFor="let hero of heroes">
-  <md-card-header>
-    <md-icon md-card-avatar>flash_on</md-icon>
-    <md-card-title>{{hero.name}}</md-card-title>
-    <md-card-subtitle>#{{hero.id}}</md-card-subtitle>
-  </md-card-header>
-  <img md-card-image src="assets/img/hero.png">
-  <md-card-content>
-    <p>
-      I am NOT Groot!
-    </p>
-  </md-card-content>
-  <md-card-actions>
-    <button md-raised-button (click)="gotoDetail(hero)">View</button>
-  </md-card-actions>
-</md-card>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
 
+  <md-card *ngFor="let hero of heroes" fxFlex="25">
+    <md-card-header>
+      <md-icon md-card-avatar>flash_on</md-icon>
+      <md-card-title>{{hero.name}}</md-card-title>
+      <md-card-subtitle>#{{hero.id}}</md-card-subtitle>
+    </md-card-header>
+    <img md-card-image src="assets/img/hero.png">
+    <md-card-content>
+      <p>
+        I am NOT Groot!
+      </p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button (click)="gotoDetail(hero)">View</button>
+    </md-card-actions>
+  </md-card>
+
+</div>

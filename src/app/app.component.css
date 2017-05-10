@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+md-sidenav {
+  width: 200px;
+}
+
+.content {
+    padding: 16px;
+}

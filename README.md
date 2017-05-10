@@ -1,61 +1,93 @@
+# Step Actions
 
+app.component.html
+```
+<div fxLayout="column" fxFlex>
 
+  ...
 
-git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
-cd toh
-npm i
+  <md-sidenav-container fxFlex>
+
+    ...
+
+    <div class="content">
+
+      ...
+
+    </div>
+
+  </md-sidenav-container>
+
+</div>
 ```
 
-Super simple Angular app with 1 module and 2 routes 
-
-## Get the Code
+app.component.css
 ```
-git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
-cd toh
-npm i
-```
+:host {
+  display: flex;
+  flex: 1;
+}
 
-# Getting Started
+md-sidenav {
+  width: 200px;
+}
 
-Super simple Angular app with 1 module and 2 routes 
-
-## Get the Code
-```
-git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
-cd toh
-npm i
+.content {
+    padding: 16px;
+}
 ```
 
-### Just in Time (JiT) Compilation
-
-Runs the TypeScript compiler and launches the app
-
+custom-material.module.ts
 ```
-npm start
+MdInputModule, MdSelectModule, MdSnackBarModule
 ```
 
-### Ahead of Time (AoT) Compilation 
-
-Runs the Angular AoT compiler, rollup, uglify for an optimized bundle, then launches the app
-
+dashboard.component.html
 ```
-npm run start-aot
-```
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
 
-### AoT + gzip 
+  <md-card ... fxFlex="25">
 
-Runs AoT plus gzips and launches the app 
+  </md-card>
 
-```
-gulp copy-aot-gzip
-npm run aot
-npm run rollup
-http-server
+</div>
 ```
 
-Notes:
-- Use your favorite server in place of `http-server`
-- This could be scripted, obviously
-- `lite-server` does not launch gzipped files by default.
+hero-detail.component.ts
+```
+import { MdSnackBar } from '@angular/material';
+...
+  selectedFood: string;
 
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+...
+constructor(
+    ...
+    public snackBar: MdSnackBar) {
+  }
+...
+  save(): void {
+...
+          let snackBarRef = this.snackBar.open('Hero saved!', 'Back to list', {
+            duration: 3000
+          });
 
+          snackBarRef.onAction().subscribe(() => {
+            this.goBack(hero);
+          });
+
+  }
+```
+
+hero-search.component.html
+```
+<md-card>
+  <md-card-content>
+...
+  </md-card-content>
+</md-card>
+```

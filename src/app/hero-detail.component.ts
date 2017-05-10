@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
+
+
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -10,6 +13,15 @@ import { HeroService } from './hero.service';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
+
+  selectedFood: string;
+
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+
   @Input() hero: Hero;
   @Output() close = new EventEmitter();
   error: any;
@@ -17,7 +29,8 @@ export class HeroDetailComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    public snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -39,7 +52,14 @@ export class HeroDetailComponent implements OnInit {
         .save(this.hero)
         .then(hero => {
           this.hero = hero; // saved hero, w/ id if new
-          this.goBack(hero);
+          let snackBarRef = this.snackBar.open('Hero saved!', 'Back to list', {
+            duration: 3000
+          });
+
+          snackBarRef.onAction().subscribe(() => {
+            this.goBack(hero);
+          });
+          
         })
         .catch(error => this.error = error); // TODO: Display error message
   }

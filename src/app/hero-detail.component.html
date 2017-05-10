@@ -1,11 +1,32 @@
-<div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
-  <div>
-    <label>id: </label>{{hero.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name" />
-  </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
-</div>
+<md-card *ngIf="hero">
+  <md-card-header>
+    <md-icon md-card-avatar>flash_on</md-icon>
+    <md-card-title>{{hero.name}}</md-card-title>
+    <md-card-subtitle>#{{hero.id}}</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+
+    <div fxLayout="column" fxLayoutGap="16px">
+
+      <md-input-container>
+        <input mdInput [(ngModel)]="hero.name" placeholder="Name">
+      </md-input-container>
+
+      <md-input-container>
+        <textarea mdInput placeholder="Address">Gotham City</textarea>
+      </md-input-container>
+
+      <md-select placeholder="Favorite food" [(ngModel)]="selectedFood" name="food">
+        <md-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </md-option>
+      </md-select>
+
+    </div>
+
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button color="primary" (click)="save(hero)">Save</button>
+    <button md-raised-button (click)="goBack(hero)">Back</button>
+  </md-card-actions>
+</md-card>
